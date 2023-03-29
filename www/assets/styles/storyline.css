@@ -1,0 +1,107 @@
+.storyline {
+    display: flex;
+    flex-direction: column;
+}
+
+.storyline-title {
+    font-size: 2rem;
+    text-align: center;
+    align-self: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.storyline-event {
+    --spacing-middle: 3rem;
+    --divider-thickness: 4px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.storyline-event::after {
+    content: '';
+    position: absolute;
+    min-height: 100%;
+    width: var(--divider-thickness);
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.storyline-event:nth-child(even) {
+    justify-content: end;
+}
+
+.storyline-event:nth-child(even)>.storyline-event__text {
+    padding-left: var(--spacing-middle);
+}
+
+.storyline-event:nth-child(odd) {
+    justify-content: start;
+}
+
+.storyline-event:nth-child(odd)>.storyline-event__text {
+    text-align: right;
+    padding-right: var(--spacing-middle);
+}
+
+.storyline-event__text {
+    width: 100%;
+    max-width: 50%;
+    margin: 1.5rem 0;
+    line-height: 2;
+}
+
+.storyline-event::before {
+    content: '';
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    background-color: var(--primary-600);
+    border: var(--divider-thickness) solid #ffffff;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.15);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100px;
+    z-index: 10;
+}
+
+.storyline-event:first-child::after {
+    min-height: 50%;
+    top: 50%;
+}
+
+.storyline-event:last-child::after {
+    min-height: 50%;
+}
+
+@media only screen and (max-width: 650px) {
+    .storyline-event__text {
+        max-width: 90%;
+    }
+
+    .storyline-event:nth-child(odd) {
+        justify-content: end;
+    }
+
+    .storyline-event:nth-child(odd)>.storyline-event__text {
+        text-align: left;
+        padding-left: var(--spacing-middle);
+        padding-right: 0px;
+    }
+
+    .storyline-event::before {
+        left: 10%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .storyline-event::after {
+        left: 10%;
+        transform: translate(-50%, 0);
+    }
+}

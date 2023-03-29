@@ -1,0 +1,45 @@
+.awards {
+    display: flex;
+    flex-direction: column;
+}
+
+.awards__title {
+    font-size: 2rem;
+    text-align: center;
+    align-self: center;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.awards__description {
+    font-size: 1rem;
+    text-align: center;
+    align-self: center;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+}
+
+.award__column {
+    padding: 0.5rem 1rem;
+}
+
+.award__column--head {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 650px) {
+    .award__column {
+        padding: 0.5rem 0.25rem;
+    }
+    /* The year column will not be displayed screens <650px, otherwise it would be too much information for a small screen */
+    .award__column--year {
+        display: none;
+    }
+    .award__column--award {
+        text-align: left;
+    }
+    .award__column--category {
+        text-align: right;
+    }
+}
