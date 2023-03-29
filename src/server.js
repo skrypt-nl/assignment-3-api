@@ -3,7 +3,7 @@ const router = require('./routes');
 
 const startServer = () => {
     const app = express();
-    const port = 3000;
+    const port = 8042;
     
     app.use('/', router);
 
