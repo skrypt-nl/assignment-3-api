@@ -1,5 +1,4 @@
 const db = require("../../database/database");
-const movier = require('movier');
 const Movie = require('./movie')
 
 exports.get = async (req, res) => {
