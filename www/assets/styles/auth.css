@@ -1,0 +1,97 @@
+.auth {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-grow: 1;
+}
+
+.auth input {
+    outline: none;
+    border: 1px solid #aaaaaa;
+    padding: 12px 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 8px;
+}
+
+.auth input:focus {
+    border-color: var(--primary-500);
+}
+
+.auth-card {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255,255,255, 0.1);
+    backdrop-filter: blur(5px);
+
+    border-radius: 16px;
+    padding: 3rem 4rem;
+
+    width: 100%;
+    max-width: 700px;
+}
+
+.auth-card__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.25rem;
+}
+
+.auth-card__title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.auth-card__sub-title {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #dfdfdf;
+}
+
+.auth-card__field-group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.auth-card__label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #dfdfdf;
+}
+
+.auth-card__field-group--address {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.auth-card__field-group--city {
+    grid-column: 1/3;
+}
+
+.auth-card__field-group--postal-code {
+    grid-column: 3/4;
+}
+
+@media only screen and (max-width: 650px) {
+    .auth-card__field-group--address {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .auth-card__field-group--city {
+        grid-column: unset;
+    }
+    
+    .auth-card__field-group--postal-code {
+        grid-column: unset;
+    }
+}
+
+.auth-card hr {
+    width: 80%;
+}

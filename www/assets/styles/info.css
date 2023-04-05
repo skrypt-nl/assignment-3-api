@@ -51,16 +51,6 @@
     gap: 0.5rem;
 }
 
-.accessibility__elem{
-    padding: 10px;
-    display: inline;
-}    
-
-.accessibility__edit{
-    padding: 10px;
-    display: inline;
-}
-
 .artists {
     display: flex;
     flex-direction: column;

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Page to log into your account">
+    <meta name="keywords" content="login, movie, film, tickets, account">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="./assets/styles/global.css">
+    <link rel="stylesheet" href="./assets/styles/auth.css">
+</head>
+
+<body>
+    <header class="default-menu">
+        <input class="default-menu__state" type="checkbox" id="default-menu__state" />
+        <label class="default-menu__toggle" for="default-menu__state">
+            <span class="default-menu__toggle-line"></span>
+        </label>
+
+        <nav class="default-menu__nav">
+            <ul>
+                <li class="menu-item"><a href="./index.html">Movies</a></li>
+                <li class="menu-item"><a href="./account.html">My Account</a></li>
+                <li class="menu-item"><a href="./login.html">Login</a></li>
+                <li class="menu-item menu-item--active"><a href="./signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="fill-body">
+        <section class="auth">
+            <div class="auth-card auth-card--login">
+                <div class="auth-card__titles">
+                    <h1 class="auth-card__title">Welcome!</h1>
+                    <h2 class="auth-card__sub-title">Create your account</h2>
+                </div>
+                <div class="auth-card__content">
+                    <form class="auth-card__form">
+                        <div class="auth-card__field-group">
+                            <label for="email" class="auth-card__label">Email</label>
+                            <input type="email" name="email" id="email" placeholder="bruce@batmaninc.com">    
+                        </div>
+
+                        <div class="auth-card__field-group">
+                            <label for="password" class="auth-card__label">Password</label>
+                            <input type="password" name="password" id="password" placeholder="*********">    
+                        </div>
+
+                        <hr>
+
+                        <div class="auth-card__field-group">
+                            <label for="email" class="auth-card__label">Name</label>
+                            <input type="email" name="email" id="email" placeholder="Bruce Wayne">    
+                        </div>
+
+                        <div class="auth-card__field-group">
+                            <label for="email" class="auth-card__label">Address</label>
+                            <input type="email" name="email" id="email" placeholder="139 Kane Street">    
+                        </div>
+
+                        <div class="auth-card__field-group--address">
+                            <div class="auth-card__field-group auth-card__field-group--city">
+                                <label for="email" class="auth-card__label">City</label>
+                                <input type="email" name="email" id="email" placeholder="Brooklyn, NY">    
+                            </div>
+    
+                            <div class="auth-card__field-group auth-card__field-group--postal-code">
+                                <label for="email" class="auth-card__label">Postal code</label>
+                                <input type="email" name="email" id="email" placeholder="11201">    
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <button type="submit">Log in</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
