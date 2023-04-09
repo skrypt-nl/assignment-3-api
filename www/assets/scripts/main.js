@@ -129,7 +129,7 @@ const addActorsToElement = (actors, parentElement) => {
     actors.forEach((actor) => {
         const actorDiv = document.createElement('div');
         actorDiv.classList.add('artist', 'artist--actor');
-
+        
         const img = document.createElement('img');
         img.classList.add('artist__img');
         img.src = actor.photo;
