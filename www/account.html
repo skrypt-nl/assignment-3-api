@@ -1,3 +1,4 @@
+<!-- Page showing a user's account page, including all of their account details which are all retrieved from the DB -->
 <!doctype html>
 <html lang="en">
 
@@ -7,8 +8,11 @@
     <meta name="keywords" content="account">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account</title>
-    <link rel="stylesheet" href="./assets/styles/global.css">
-    <link rel="stylesheet" href="./assets/styles/account.css">
+    <link rel="stylesheet" href="/assets/styles/global.css">
+    <link rel="stylesheet" href="/assets/styles/account.css">
+    <script type="application/javascript" src="/assets/scripts/menu.js" defer></script>
+    <script type="application/javascript" src="/assets/scripts/account.js" defer></script>
+
 </head>
 
 <body>
@@ -19,14 +23,43 @@
         </label>
 
         <nav class="default-menu__nav">
-            <ul>
-                <li class="menu-item"><a href="./">Movies</a></li>
-                <li class="menu-item menu-item--active"><a href="./account">My Account</a></li>
-                <li class="menu-item"><a href="./login">Login</a></li>
-                <li class="menu-item"><a href="./signup">Sign Up</a></li>
+            <ul id="menu">
             </ul>
         </nav>
     </header>
+
+    <main class="fill-body">
+        <section class="acc">
+            <div class="acc-card">
+                <div class="acc-card__titles">
+                    <h1 class="acc-card__title">Welcome back, <span id="userNameHeader" class="acc-card_username-title"></span>!</h1>
+                    <hr>
+                    <h2 class="acc-card__sub-title">My account details</h2>
+                    <div class="acc-card_details">
+                        <div class="acc-card__static">
+                            <h3 class="acc-card__sub-title">Name</h3>
+                            <h3 class="acc-card__sub-title">Login</h3>
+                            <h3 class="acc-card__sub-title">Email</h3>
+                            <h3 class="acc-card__sub-title">Password</h3>
+                            <h3 class="acc-card__sub-title">Address</h3>
+                            <h3 class="acc-card__sub-title">Creditcard</h3>
+                            <h3 class="acc-card__sub-title">Order history</h3>
+                        </div>
+                        <div class="acc-card__dynamic">
+                            <span id="userName"></span>
+                            <span id="login"></span>
+                            <span id="email"></span>
+                            <span id="password"></span>
+                            <span id="address"></span>
+                            <span id="creditcard"></span>
+                            <a href="/tickets"><span id="">View order history</span><a>
+                        </div>
+                    </div>
+                </div>
+                <div class="account-buttons"></div>
+            </div>
+        </section>
+    </main>
     
 </body>
 

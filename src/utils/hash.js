@@ -1,3 +1,5 @@
+// Utility function to hash a string
+
 const bcrypt = require("bcrypt")
 const saltRounds = 8
 

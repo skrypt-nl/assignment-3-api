@@ -1,3 +1,5 @@
+// This file is responsible for creating the database structure
+
 const db = require('./database')
 const fs = require('fs');
 

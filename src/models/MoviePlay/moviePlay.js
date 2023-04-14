@@ -1,3 +1,5 @@
+// MoviePlay Class
+
 class MoviePlay {
     constructor(id, movie, date) {
         this.id = id;

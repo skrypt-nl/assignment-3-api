@@ -1,3 +1,4 @@
+<!-- Page confirming a user's order -->
 <!doctype html>
 <html lang="en">
 
@@ -9,7 +10,8 @@
     <title>Login</title>
     <link rel="stylesheet" href="./assets/styles/global.css">
     <link rel="stylesheet" href="./assets/styles/thankyou.css">
-    <script src="./assets/scripts/auth.js" defer></script>
+    <script src="./assets/scripts/thankyou.js" defer></script>
+    <script src="./assets/scripts/menu.js" defer></script>
 </head>
 
 <body>
@@ -20,23 +22,18 @@
         </label>
 
         <nav class="default-menu__nav">
-            <ul>
-                <li class="menu-item"><a href="./">Movies</a></li>
-                <li class="menu-item"><a href="./account">My Account</a></li>
-                <li class="menu-item menu-item--active"><a href="./login">Login</a></li>
-                <li class="menu-item"><a href="./signup">Sign Up</a></li>
+            <ul id="menu">
             </ul>
         </nav>
     </header>
 
     <main class="fill-body">
-        <section class="auth">
-            <div class="auth-card auth-card--login">
-                <div class="auth-card__titles">
-                    <h1 class="auth-card__title">Thank you for your order!</h1>
-                    <img src="PATH" alt ="checkbox">
-                    <h2 class="auth-card__sub-title">You will receive an email with your order confirmation.</h2>
-                </div>
+        <section class="confirm">
+            <div class="confirm-card">
+                <h1 class="confirm-card__title">Thank you for your order!</h1>
+                <img class ="check-image" src="../../assets/img/checkbox.png" alt ="checkbox">
+                <h2 class="confirm-card__sub-title">You will receive an email with your order confirmation.</h2>
+                <div class="continue-buttons">
                 </div>
             </div>
         </section>

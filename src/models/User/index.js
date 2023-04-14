@@ -1,4 +1,0 @@
-module.exports = {
-    userRoutes: require('./user.routes'),
-    User: require('./user'),
-}

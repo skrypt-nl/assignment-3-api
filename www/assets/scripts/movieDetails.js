@@ -1,7 +1,9 @@
+// Fetch the movie that the user has selected from index.html and add all of the movie's metadata to movie.html
+
 async function getMovies() {
-    const movieId = window.location.pathname.split('movie/')[1];
+    const movieId = window.location.pathname.split('movie/')[1]; // Split path to get id
     
-    const response = await fetch(`/api/movies/${movieId}`);
+    const response = await fetch(`/api/movies/${movieId}`); // Fetch selected movie
     const movie = await response.json();
 
     const addMoviesToElement = (movie) => {
@@ -52,11 +54,11 @@ async function getMovies() {
 
             linkElement.appendChild(arrowNode);
         }
-        
+        // Create button that lets a user proceed to the order page for the selected movie
         const buttonPlace = document.querySelector('a.nav-button');
         const button = document.createElement("button");
         const link = document.createElement("a");
-        buttonPlace.href = "/thankyou"
+        buttonPlace.href = "/order/"+movie.id+"";
         button.textContent = "Buy Tickets";
         buttonPlace.appendChild(link);
         link.appendChild(button);

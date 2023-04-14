@@ -1,4 +1,9 @@
-[https://www.codemzy.com/blog/nodejs-file-folder-structure]Folder structure
+# How to use
+1) Clone the repo
+2) Run `npm install`
+3) Run `npm run db` to seed the database
+4) Run `npm run dev` to start the server
+5) Access the server at localhost:8042
 
 # Routes
 
@@ -17,7 +22,7 @@ GET /tickets                    -> Haal de tickets van de ingelogde user op
 
 # Webtechnology
 Interactive Web Application for Utrecht University's Webtechnology course.</br>
-Assignment 2 - JavaScript & DOM manipulation
+Assignment 3 - JavaScript & DOM manipulation
 
 The amazing developers of this website: </br>
 Luke Koning (7073046) </br>

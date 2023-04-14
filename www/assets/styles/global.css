@@ -1,3 +1,5 @@
+/* Add default styles that are used for general items on all .html pages */
+
 :root {
     --text-color: rgb(var(--text-color-r), var(--text-color-g), var(--text-color-b));
 

@@ -1,0 +1,66 @@
+<!-- Page displaying the user's shopping cart, where all the movies he or she has added are loaded dynamically -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Shopping cart">
+    <meta name="keywords" content="shopping cart">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping cart</title>
+    <link rel="stylesheet" href="/assets/styles/global.css">
+    <link rel="stylesheet" href="/assets/styles/cart.css">
+    <link rel="stylesheet" href="/assets/styles/home.css">
+    <script type="application/javascript" src="/assets/scripts/menu.js" defer></script>
+    <script type="application/javascript" src="/assets/scripts/cart.js" defer></script>
+
+</head>
+
+<body>
+    <header class="default-menu">
+        <input class="default-menu__state" type="checkbox" id="default-menu__state" />
+        <label class="default-menu__toggle" for="default-menu__state">
+            <span class="default-menu__toggle-line"></span>
+        </label>
+
+        <nav class="default-menu__nav">
+            <ul id="menu">
+            </ul>
+        </nav>
+    </header>
+
+    <main class="fill-body">
+        <section class="cart">
+            <div class="cart-card">
+                <div class="cart-card__titles">
+                    <h1 class="cart-card__title">My shopping cart</h1>
+                    <hr>                        
+                </div>
+                    <div class="cart-card_details">
+                        <div class="cart-card__left">
+                            <h2 class="cart-card__header">Movie title</h2>
+                        </div>
+                        <div class="cart-card__date">
+                            <h2 class="cart-card__header">Date</h2>
+                        </div>
+                        <div class="cart-card__time">
+                            <h2 class="cart-card__header">Time</h2>
+                        </div>
+                        <div class="cart-card__tickets">
+                            <h2 class="cart-card__header">Number of tickets</h2>
+                        </div>
+                    </div>
+                    <div class="checkout-button">
+                        <a href="/index"><button id="continue-button">Continue shopping</button></a>
+                        <form action="/tickets" method="POST">
+                            <button id="checkout-button" type="submit">Confirm order</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="orders-group orders-group--order">
+                    <div class="orders-group__list"></div>
+                </div>
+            </div>
+    </main>
+</body>
+</html>

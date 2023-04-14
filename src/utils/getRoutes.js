@@ -1,3 +1,5 @@
+// Utility function to get the routes for a given model
+
 const capitalizeFirstLetter = require("./capitalizeFirstLetter");
 
 const getRoutes = (model) => {

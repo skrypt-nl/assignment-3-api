@@ -25,7 +25,6 @@ CREATE TABLE tickets (
     user_id TEXT,
     movie_play_id INTEGER,
     amount INTEGER,
-    total_price REAL,
     purchased_on TEXT,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id),
@@ -36,7 +35,6 @@ CREATE TABLE movie_plays (
     id INTEGER,
     movie_id TEXT,
     movie_date TEXT,
-    ticket_price REAL,
     PRIMARY KEY (id),
     FOREIGN KEY (movie_id) REFERENCES movies(id)
 );

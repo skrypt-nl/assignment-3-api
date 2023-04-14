@@ -1,10 +1,11 @@
+// Fetch all movies from the API and create elements to show the poster, title and some metadata for each movie that is available
+
 const urlParams = new URLSearchParams(window.location.search);
 const p = urlParams.get('p');
 const currentPage = (p && !isNaN(p)) ? parseInt(p) : 1;
 
 async function getMovies() {
     const url = `http://localhost:8042/api/movies?p=${currentPage}`
-    console.log(url);
 
     const response = await fetch(url);
     const movies = await response.json();
@@ -64,10 +65,8 @@ getMovies();
 
 function createButtons() {
     const paginationWrapper = document.getElementById('pagination');
-    console.log(paginationWrapper);
 
-    console.log(currentPage);
-
+    // Allow navigation to page 1 if the user is on page 2
     if (currentPage === 2) {
         const prevLink = document.createElement("a");
         prevLink.textContent = "< Previous page";
@@ -76,6 +75,7 @@ function createButtons() {
         paginationWrapper.appendChild(prevLink);
     }
 
+    // Allow navigation to page 2 if the user is on page 1
     if (currentPage === 1) {
         const nextLink = document.createElement("a");
         nextLink.textContent = "Next page >";

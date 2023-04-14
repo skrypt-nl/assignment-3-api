@@ -1,3 +1,5 @@
+/* Add markup to display the grid with movies on the homepage (index.html) */
+
 .movies {
     display: flex;
     flex-direction: column;

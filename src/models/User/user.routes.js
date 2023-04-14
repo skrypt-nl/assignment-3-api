@@ -1,14 +1,19 @@
+// User Routes
+
 const express = require('express');
 const userRoutes = express.Router();
 const db = require("../../database/database");
 const hash = require("../../utils/hash");
 const { compare } = require("bcrypt");
+const loggedIn = require("../../middleware/loggedIn");
 
 userRoutes.post('/login', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
+    const from = req.body.from ?? null;
 
-    try {
+    try { 
+        // Get the user with the give username from the database
         const user = await new Promise((resolve, reject) => {
             db.get('SELECT * FROM users WHERE login = ?', [username], (err, row) => {
                 if (err) {
@@ -20,12 +25,14 @@ userRoutes.post('/login', async (req, res) => {
             });
         });
 
+        // Return a general error when the user doesn't exist
         if (!user) {
             const errorMessage = encodeURIComponent('Email or password is incorrect');
             res.redirect(`/login?status=ERROR&message=${errorMessage}`);
             return;
         }
 
+        // Check the plain password against the hashed password in the database
         const correctPassword = await compare(password, user.password);
 
         if (!correctPassword) {
@@ -35,9 +42,9 @@ userRoutes.post('/login', async (req, res) => {
         }
 
         const session = req.session;
-        session.userid = req.body.username;
+        session.userid = user.login;
 
-        res.redirect('/account');
+        res.redirect(from ?? '/account');
     } catch (e) {
         console.log(e.message);
         const errorMessage = encodeURIComponent('Failed to authenticate user');
@@ -45,13 +52,16 @@ userRoutes.post('/login', async (req, res) => {
     }
 });
 
+// Route to create a new user
 userRoutes.post('/signup', async (req, res) => {
     const username = req.body.username;
     const email = req.body.email;
     const password = await hash(req.body.password);
     const name = req.body.name;
     const address = req.body.address;
+    const creditcard = req.body.creditcard;
 
+    // Check if there isn't already an existing user with the provided username or email
     const userExists = await new Promise((resolve, reject) => {
         db.get('SELECT * FROM users WHERE login = ? OR email = ?', [username, email], (err, row) => {
             if (err) {
@@ -69,8 +79,8 @@ userRoutes.post('/signup', async (req, res) => {
     }
 
     db.run(
-        'INSERT INTO users (name, email, login, password, address) VALUES (?, ?, ?, ?, ?)',
-        [name, email, username, password, address],
+        'INSERT INTO users (name, email, login, password, address, credit_card) VALUES (?, ?, ?, ?, ?, ?)',
+        [name, email, username, password, address, creditcard],
         function (err) {
             if (err) {
                 const errorMessage = encodeURIComponent('Unexpected database error. Please try again.');
@@ -81,6 +91,37 @@ userRoutes.post('/signup', async (req, res) => {
             }
         }
     );
+});
+
+// Route to get the details from the authenticated user
+userRoutes.get('/', async (req, res) => {
+    const username = req.session.userid;
+
+    try {
+        const user = await new Promise((resolve, reject) => {
+            db.get('SELECT * FROM users WHERE login = ?', [username], (err, row) => {
+                if (!err) {
+                    resolve(row);
+                }
+            });
+        });
+
+        if (!user) {
+            res.status(404).json({'message': 'User not found'});
+            return;
+        }
+
+        // Hide the password on the front-end
+        delete user.password;
+
+        // Mask the credit card number
+        user.credit_card = user.credit_card.replace(/(\d{4})(?=\d{4})/g, "**** ");
+        
+        res.status(200).json(user);
+    } catch (e) {
+        console.error(e.message);
+        res.status(403).json({message: 'Something went wrong'});
+    }
 });
 
 module.exports = userRoutes;

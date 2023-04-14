@@ -1,3 +1,5 @@
+// Retrieve current user from the DB and get all of their information to display on the account.html page
+
 const getUser = async () => {
   try {
       const response = await fetch('/user');
@@ -9,15 +11,14 @@ const getUser = async () => {
 
 const displayUser = async () => {
   const user = await getUser();
-  console.log(user);
 
   document.getElementById('userNameHeader').textContent = user.name;
   document.getElementById('userName').textContent = user.name;
   document.getElementById('login').textContent = user.login;
   document.getElementById('email').textContent = user.email;
-  document.getElementById('password').textContent = "user.password"; // Replace with user.password once added to DB
+  document.getElementById('password').textContent = "******";
   document.getElementById('address').textContent = user.address;
-  document.getElementById('creditcard').textContent = "user.creditCard"; // Replace with user.creditcard once added to DB
+  document.getElementById('creditcard').textContent = user.credit_card;
   if (user.orderHistory) { // Check if user has order history
     document.getElementById('orderHistory').textContent = user.orderHistory;
   }
@@ -30,7 +31,7 @@ displayUser();
 
 // Logout button
 function logOutButton() {
-  const buttonPlace = document.querySelector('.continue-button');
+  const buttonPlace = document.querySelector('.account-buttons');
   const continueButton = document.createElement("button");
   const continueLink = document.createElement("a");
   continueLink.href = "./logout";
@@ -40,3 +41,15 @@ function logOutButton() {
 }
 
 logOutButton();
+
+function cartButton() {
+  const cartButtonPlace = document.querySelector('.account-buttons');
+  const cartButton = document.createElement("button");
+  const cartLink = document.createElement("a");
+  cartLink.href = "./cart";
+  cartButton.textContent = "Go to cart";
+  cartButtonPlace.appendChild(cartLink);
+  cartLink.appendChild(cartButton);
+}
+
+cartButton();

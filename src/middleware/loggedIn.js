@@ -1,9 +1,12 @@
+// This file provides a middleware to check if the user is a registered user
+
 const loggedIn = (req, res, next) => {
     if (req.session.userid) {
         next();
     } else {
         const errorMessage = encodeURIComponent('You need to be logged in to access this page.');
-        res.redirect(`/login?status=ERROR&message=${errorMessage}`);
+        const nextUrl = encodeURIComponent(req.originalUrl);
+        res.redirect(`/login?status=ERROR&message=${errorMessage}&from=${nextUrl}`);
     }
 };
 

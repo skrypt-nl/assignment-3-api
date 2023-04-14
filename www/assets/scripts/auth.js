@@ -1,3 +1,5 @@
+// Check if a user has succesfully logged in or not, and subsequently shows a 'SUCCESS or 'ERROR' message to the user
+
 const displayNotification = (status, message) => {
     const notificationsWrapper = document.getElementById('auth-notifications');
 
@@ -12,12 +14,29 @@ const displayNotification = (status, message) => {
     notificationsWrapper.appendChild(notification);
 }
 
+const setFromUrl = (url) => {
+    const loginForm = document.getElementById('login');
+
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.value = url;
+    hiddenInput.name = 'from';
+    hiddenInput.id = 'from';
+
+    loginForm.appendChild(hiddenInput);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const status = urlParams.get('status');
-    const message = decodeURIComponent(urlParams.get('message'));
+    const message = urlParams.get('message');
+    const fromUrl = urlParams.get('from');
 
     if (status && message) {
-        displayNotification(status, message);
+        displayNotification(status, decodeURIComponent(message));
+    }
+
+    if (fromUrl) {
+        setFromUrl(decodeURIComponent(fromUrl));
     }
 })
