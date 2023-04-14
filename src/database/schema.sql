@@ -17,7 +17,6 @@ CREATE TABLE users (
     password TEXT,
     address TEXT,
     credit_card TEXT,
-    order_history TEXT,
     PRIMARY KEY (id)
 );
 

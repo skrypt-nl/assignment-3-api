@@ -117,7 +117,7 @@ const setMovieTrailerURL = (url) => {
 }
 
 const setMoviePosterSrc = (src, alt) => {
-    const posterElements = document.querySelectorAll('img.movie__poster-img');
+    const posterElements = document.querySelectorAll('mov-meta__poster');
 
     for (const posterElement of posterElements) {
         posterElement.src = src;

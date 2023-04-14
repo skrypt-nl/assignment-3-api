@@ -36,10 +36,10 @@
                     <h2 class="auth-card__sub-title">Create your account</h2>
                 </div>
                 <div class="auth-card__content">
-                    <form class="auth-card__form">
+                    <form class="auth-card__form" method="POST" action="/user/signup">
                         <div class="auth-card__field-group">
-                            <label for="email" class="auth-card__label">Email</label>
-                            <input type="email" name="email" id="email" placeholder="bruce@batmaninc.com">    
+                            <label for="username" class="auth-card__label">Username</label>
+                            <input type="text" name="username" id="username" placeholder="batman">
                         </div>
 
                         <div class="auth-card__field-group">
@@ -50,30 +50,23 @@
                         <hr>
 
                         <div class="auth-card__field-group">
-                            <label for="email" class="auth-card__label">Name</label>
-                            <input type="email" name="email" id="email" placeholder="Bruce Wayne">    
+                            <label for="name" class="auth-card__label">Name</label>
+                            <input type="text" name="name" id="name" placeholder="Bruce Wayne">
                         </div>
 
                         <div class="auth-card__field-group">
-                            <label for="email" class="auth-card__label">Address</label>
-                            <input type="email" name="email" id="email" placeholder="139 Kane Street">    
+                            <label for="email" class="auth-card__label">Email</label>
+                            <input type="email" name="email" id="email" placeholder="bruce@batmaninc.com">
                         </div>
 
-                        <div class="auth-card__field-group--address">
-                            <div class="auth-card__field-group auth-card__field-group--city">
-                                <label for="email" class="auth-card__label">City</label>
-                                <input type="email" name="email" id="email" placeholder="Brooklyn, NY">    
-                            </div>
-    
-                            <div class="auth-card__field-group auth-card__field-group--postal-code">
-                                <label for="email" class="auth-card__label">Postal code</label>
-                                <input type="email" name="email" id="email" placeholder="11201">    
-                            </div>
+                        <div class="auth-card__field-group">
+                            <label for="address" class="auth-card__label">Address</label>
+                            <input type="text" name="address" id="address" placeholder="139 Kane Street">
                         </div>
 
                         <hr>
 
-                        <button type="submit">Log in</button>
+                        <button type="submit">Sign Up</button>
                     </form>
                 </div>
             </div>

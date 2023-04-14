@@ -1,7 +1,13 @@
+const urlParams = new URLSearchParams(window.location.search);
+const p = urlParams.get('p');
+const currentPage = (p && !isNaN(p)) ? parseInt(p) : 1;
+
 async function getMovies() {
-    const response = await fetch('http://localhost:8042/api/movies');
+    const url = `http://localhost:8042/api/movies?p=${currentPage}`
+    console.log(url);
+
+    const response = await fetch(url);
     const movies = await response.json();
-    //console.log(movies[0]);
     
     movies.forEach(function (movie) {
 
@@ -16,19 +22,24 @@ async function getMovies() {
             });
             });
         }
-        
+
         const addMoviesToElement = (movie, parentElement) => {
-            console.log(movie);
             const movieDiv = document.createElement('div');
             movieDiv.classList.add('mov', 'mov--movie');
         
             const metaDiv = document.createElement('div');
             metaDiv.classList.add('mov-meta');
             movieDiv.appendChild(metaDiv);
+
+            const posterImage = document.createElement('img');
+            posterImage.classList.add('mov-meta__poster');
+            posterImage.src = movie.poster;
+            metaDiv.appendChild(posterImage);
         
-            const titleHeading = document.createElement('h4');
+            const titleHeading = document.createElement('a');
             titleHeading.classList.add('mov-meta__title');
             titleHeading.textContent = movie.title;
+            titleHeading.href = "/movie/"+movie.id+"";
             metaDiv.appendChild(titleHeading);
         
             const yearHeading = document.createElement('h5');
@@ -40,23 +51,40 @@ async function getMovies() {
             genreHeading.classList.add('mov-meta__year');
             genreHeading.textContent = movie.genre;
             metaDiv.appendChild(genreHeading);
-
-            const plot = document.createElement('h5');
-            plot.classList.add('mov-meta__plot');
-            plot.textContent = movie.plot;
-            metaDiv.appendChild(plot);
-            
-            
-        
+             
             parentElement.appendChild(metaDiv);
         }
 
         displayMovies(movie);
-
-            
     });
 
 }
 
 getMovies();
 
+function createButtons() {
+    const paginationWrapper = document.getElementById('pagination');
+    console.log(paginationWrapper);
+
+    console.log(currentPage);
+
+    if (currentPage === 2) {
+        const prevLink = document.createElement("a");
+        prevLink.textContent = "< Previous page";
+        prevLink.href = `/?p=${currentPage - 1}`;
+
+        paginationWrapper.appendChild(prevLink);
+    }
+
+    if (currentPage === 1) {
+        const nextLink = document.createElement("a");
+        nextLink.textContent = "Next page >";
+        nextLink.href = `/?p=${currentPage + 1}`
+    
+        paginationWrapper.appendChild(nextLink);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    createButtons();
+})

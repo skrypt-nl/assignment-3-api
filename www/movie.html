@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Movies page">
+    <meta name="keywords" content="Movies, timeslots, film, homepage">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <link rel="stylesheet" href="/assets/styles/global.css">
+    <link rel="stylesheet" href="/assets/styles/movie.css">
+    <script src="/assets/scripts/movieDetails.js" defer></script>
+</head>
+
+<body>
+    <header class="default-menu">
+        <input class="default-menu__state" type="checkbox" id="default-menu__state" />
+        <label class="default-menu__toggle" for="default-menu__state">
+            <span class="default-menu__toggle-line"></span>
+        </label>
+
+        <nav class="default-menu__nav">
+            <ul>
+                <li class="menu-item menu-item--active"><a href="/">Movies</a></li>
+                <li class="menu-item"><a href="/account">My Account</a></li>
+                <li class="menu-item"><a href="/login">Login</a></li>
+                <li class="menu-item"><a href="/signup">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <img class="mov-meta__poster" />
+            <div class="movie-meta">
+                <h1 class="movie-meta__title"></h1>
+                <div class="tags">
+                    <h2 class="movie-meta__genre tag tag--primary"></h2>
+                    <h2 class="movie-meta__year tag tag--primary"></h2>
+                </div> 
+                <p class="movie-meta__plot"></p>    
+                <a class="movie-meta__trailer"></a>
+            </div>
+            <a class="nav-button"></a>
+    </section>
+    </main>
+</body>
+
+</html>
