@@ -95,3 +95,28 @@
 .auth-card hr {
     width: 80%;
 }
+
+#auth-notifications {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+#auth-notifications:empty {
+    display:none;
+}
+
+.auth-notification {
+    border-radius: 0.25rem;
+    padding: 1.5rem
+}
+
+.auth-notification--success {
+    background-color: #bbf7d0;
+    color: #15803d;
+}
+
+.auth-notification--error {
+    background-color: #fecaca;
+    color: #b91c1c;
+}

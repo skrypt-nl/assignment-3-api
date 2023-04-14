@@ -9,7 +9,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="./assets/styles/global.css">
     <link rel="stylesheet" href="./assets/styles/auth.css">
-    <script src="./assets/scripts/auth.js" defer></script>
+    <script type="application/javascript" src="./assets/scripts/auth.js" defer></script>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 
         <nav class="default-menu__nav">
             <ul>
-                <li class="menu-item"><a href="./index">Movies</a></li>
+                <li class="menu-item"><a href="./">Movies</a></li>
                 <li class="menu-item"><a href="./account">My Account</a></li>
                 <li class="menu-item menu-item--active"><a href="./login">Login</a></li>
                 <li class="menu-item"><a href="./signup">Sign Up</a></li>
@@ -36,15 +36,16 @@
                     <h1 class="auth-card__title">Welcome back</h1>
                     <h2 class="auth-card__sub-title">Please log in to proceed</h2>
                 </div>
+                <div id="auth-notifications"></div>
                 <div class="auth-card__content">
                     <form class="auth-card__form" id="login" action="./user/login" method="POST"> 
                         <div class="auth-card__field-group">
-                            <label for="email" class="auth-card__label">Email</label>
-                            <input type="email" name="email" id="email" placeholder="your@email.com" required>    
+                            <label for="username" class="auth-card__label">Username</label>
+                            <input type="text" name="username" id="username" placeholder="batman" required>
                         </div>
 
                         <div class="auth-card__field-group">
-                            <label for="password" class="auth-card__label">Wachtwoord</label>
+                            <label for="password" class="auth-card__label">Password</label>
                             <input type="password" name="password" id="password" placeholder="*********" required>    
                         </div>
 

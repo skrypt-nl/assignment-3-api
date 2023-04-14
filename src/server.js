@@ -2,7 +2,7 @@ const express = require('express');
 const router = require('./routes');
 const session = require('express-session');
 const { v4: uuidv4 } = require('uuid');
-const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser");
 
 const startServer = () => {
     const app = express();
@@ -14,7 +14,7 @@ const startServer = () => {
         resave: false,
         saveUninitialized: false,
         cookie: { 
-          secure: false, // This will only work if you have https enabled!
+          secure: false,
           maxAge: 60 * 60 * 24 * 365 // 1 min
         },
         genid: (req) => {
@@ -22,14 +22,15 @@ const startServer = () => {
         }
     }))
 
-    // configure the app to use bodyParser()
-    app.use(bodyParser.urlencoded({
+    app.use(express.urlencoded({
         extended: true
     }));
-    app.use(bodyParser.json());
+    app.use(express.json());
     
     app.use('/', router);
     app.use(express.static('./www', {extensions: ['html']}));
+
+    app.use(cookieParser());
 
     app.listen(port);
 }
