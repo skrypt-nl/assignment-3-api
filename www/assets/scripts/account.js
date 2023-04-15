@@ -9,9 +9,19 @@ const getUser = async () => {
   }
 }
 
+const getHistory = async () => {
+  try {
+      const response = await fetch('/tickets');
+      return response.json();
+  } catch (error) {
+      console.error("Cannot retrieve user order history");
+  }
+}
+
 const displayUser = async () => {
   const user = await getUser();
-
+  const history = await getHistory();
+  
   document.getElementById('userNameHeader').textContent = user.name;
   document.getElementById('userName').textContent = user.name;
   document.getElementById('login').textContent = user.login;
@@ -19,12 +29,56 @@ const displayUser = async () => {
   document.getElementById('password').textContent = "******";
   document.getElementById('address').textContent = user.address;
   document.getElementById('creditcard').textContent = user.credit_card;
-  if (user.orderHistory) { // Check if user has order history
-    document.getElementById('orderHistory').textContent = user.orderHistory;
+
+
+  history.forEach(function (hist) {
+
+    const displayhistory = (history) => {
+      document.querySelectorAll('.history-group__list').forEach((listElement) => {
+          addhistoryToElement(history, listElement);
+      });
   }
-  else {
-      document.getElementById('orderHistory').textContent = "No order history";
+
+  const addhistoryToElement = (hist, parentElement) => {
+      const histDiv = document.createElement('div');
+      histDiv.classList.add('hs', 'hs--hist');
+  
+      const metaDiv = document.createElement('div');
+      metaDiv.classList.add('hs-meta');
+      histDiv.appendChild(metaDiv);
+
+      const idHeading = document.createElement('h5');
+      idHeading.classList.add('hs-meta__ID');
+      idHeading.textContent = 'Order #' + hist.ticketId;
+      metaDiv.appendChild(idHeading);
+
+      const amountHeading = document.createElement('h5');
+      amountHeading.classList.add('hs-meta__data');
+      amountHeading.textContent = 'Amount: ' + hist.amount;
+      metaDiv.appendChild(amountHeading);
+
+      const purchaseHeading = document.createElement('h5');
+      purchaseHeading.classList.add('hs-meta__data');
+      purchaseHeading.textContent = 'Purchase Date: ' + hist.purchased_on;
+      metaDiv.appendChild(purchaseHeading);
+
+      const dateHeading = document.createElement('h5');
+      dateHeading.classList.add('hs-meta__data');
+      dateHeading.textContent = 'Movie Date: ' + hist.movie_date;
+      metaDiv.appendChild(dateHeading);
+
+      const titleHeading = document.createElement('h5');
+      titleHeading.classList.add('hs-meta__data');
+      titleHeading.textContent = 'Movie: ' + hist.title;
+      metaDiv.appendChild(titleHeading);
+       
+      parentElement.appendChild(metaDiv);
   }
+
+  displayhistory(hist);
+
+  });
+ 
 }
 
 displayUser();
