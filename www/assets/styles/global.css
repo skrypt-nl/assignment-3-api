@@ -2,13 +2,10 @@
 
 :root {
     --text-color: rgb(var(--text-color-r), var(--text-color-g), var(--text-color-b));
-
     --text-color-r: 255;
     --text-color-g: 255;
     --text-color-b: 255;
-
     --text-size: 1rem;
-
     --primary-500: #eab308;
     --primary-600: #ca8a04;
 }
@@ -128,6 +125,7 @@ button {
     background: var(--primary-500);
     border-radius: 50px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 button:hover {

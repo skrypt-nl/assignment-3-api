@@ -9,25 +9,25 @@ async function getMovies() {
 
     const response = await fetch(url);
     const movies = await response.json();
-    
-    movies.forEach(function (movie) {
+
+    movies.forEach(function(movie) {
 
         const displayMovies = (movies) => {
             document.querySelectorAll('.movies-group--movie').forEach((groupElement) => {
                 groupElement.querySelectorAll('.movies-group__label').forEach((labelElement) => {
                     labelElement.textContent = 'Movies';
                 });
-        
-            groupElement.querySelectorAll('.movies-group__list').forEach((listElement) => {
-                addMoviesToElement(movies, listElement);
-            });
+
+                groupElement.querySelectorAll('.movies-group__list').forEach((listElement) => {
+                    addMoviesToElement(movies, listElement);
+                });
             });
         }
 
         const addMoviesToElement = (movie, parentElement) => {
             const movieDiv = document.createElement('div');
             movieDiv.classList.add('mov', 'mov--movie');
-        
+
             const metaDiv = document.createElement('div');
             metaDiv.classList.add('mov-meta');
             movieDiv.appendChild(metaDiv);
@@ -36,13 +36,13 @@ async function getMovies() {
             posterImage.classList.add('mov-meta__poster');
             posterImage.src = movie.poster;
             metaDiv.appendChild(posterImage);
-        
+
             const titleHeading = document.createElement('a');
             titleHeading.classList.add('mov-meta__title');
             titleHeading.textContent = movie.title;
-            titleHeading.href = "/movie/"+movie.id+"";
+            titleHeading.href = "/movie/" + movie.id + "";
             metaDiv.appendChild(titleHeading);
-        
+
             const yearHeading = document.createElement('h5');
             yearHeading.classList.add('mov-meta__year');
             yearHeading.textContent = movie.year;
@@ -52,7 +52,7 @@ async function getMovies() {
             genreHeading.classList.add('mov-meta__year');
             genreHeading.textContent = movie.genre;
             metaDiv.appendChild(genreHeading);
-             
+
             parentElement.appendChild(metaDiv);
         }
 
@@ -80,7 +80,7 @@ function createButtons() {
         const nextLink = document.createElement("a");
         nextLink.textContent = "Next page >";
         nextLink.href = `/?p=${currentPage + 1}`
-    
+
         paginationWrapper.appendChild(nextLink);
     }
 }
