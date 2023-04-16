@@ -13,7 +13,9 @@ Tomas van Groningen (2435268)
 2) Run `npm install`
 3) Run `npm run db` to seed the database
 4) Run `npm run dev` to start the server
-5) Access the server at localhost:8042
+
+Do note that the application is configured to run on the webtech.science.uu.nl/group42/ space only.
+Because of server structure with the subfolders, all asset links and redirects had to be hard coded.
 
 
 # Database 
