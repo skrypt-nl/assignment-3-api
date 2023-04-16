@@ -5,7 +5,6 @@ const userRoutes = express.Router();
 const db = require("../../database/database");
 const hash = require("../../utils/hash");
 const { compare } = require("bcrypt");
-const loggedIn = require("../../middleware/loggedIn");
 
 userRoutes.post('/login', async (req, res) => {
     const username = req.body.username;
@@ -18,7 +17,7 @@ userRoutes.post('/login', async (req, res) => {
             db.get('SELECT * FROM users WHERE login = ?', [username], (err, row) => {
                 if (err) {
                     const errorMessage = encodeURIComponent('Email or password is incorrect');
-                    res.redirect(`/login?status=ERROR&message=${errorMessage}`);
+                    res.redirect(`/group42/login?status=ERROR&message=${errorMessage}`);
                 } else {
                     resolve(row);
                 }
@@ -28,7 +27,7 @@ userRoutes.post('/login', async (req, res) => {
         // Return a general error when the user doesn't exist
         if (!user) {
             const errorMessage = encodeURIComponent('Email or password is incorrect');
-            res.redirect(`/login?status=ERROR&message=${errorMessage}`);
+            res.redirect(`/group42/login?status=ERROR&message=${errorMessage}`);
             return;
         }
 
@@ -37,18 +36,18 @@ userRoutes.post('/login', async (req, res) => {
 
         if (!correctPassword) {
             const errorMessage = encodeURIComponent('Email or password is incorrect');
-            res.redirect(`/login?status=ERROR&message=${errorMessage}`);
+            res.redirect(`/group42/login?status=ERROR&message=${errorMessage}`);
             return;
         }
 
         const session = req.session;
         session.userid = user.login;
 
-        res.redirect(from ?? '/account');
+        res.redirect(from ?? '/group42/account');
     } catch (e) {
         console.log(e.message);
         const errorMessage = encodeURIComponent('Failed to authenticate user');
-        res.redirect(`/login?status=ERROR&message=${errorMessage}`);
+        res.redirect(`/group42/login?status=ERROR&message=${errorMessage}`);
     }
 });
 
@@ -74,7 +73,7 @@ userRoutes.post('/signup', async (req, res) => {
 
     if (userExists) {
         const errorMessage = encodeURIComponent('Email or username already taken');
-        res.redirect(`/signup?status=ERROR&message=${errorMessage}`);
+        res.redirect(`/group42/signup?status=ERROR&message=${errorMessage}`);
         return;
     }
 
@@ -84,10 +83,10 @@ userRoutes.post('/signup', async (req, res) => {
         function (err) {
             if (err) {
                 const errorMessage = encodeURIComponent('Unexpected database error. Please try again.');
-                res.redirect(`/signup?status=ERROR&message=${errorMessage}`);
+                res.redirect(`/group42/signup?status=ERROR&message=${errorMessage}`);
             } else {
                 const message =  encodeURIComponent('Your account was created successfully. Please sign in to continue.');
-                res.redirect(`/login?status=SUCCESS&message=${message}`);
+                res.redirect(`/group42/login?status=SUCCESS&message=${message}`);
             }
         }
     );

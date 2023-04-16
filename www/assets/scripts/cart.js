@@ -48,7 +48,7 @@ const displayOrder = (order) => {
 }
 
 async function getOrders() {
-    const url = `http://localhost:8042/api/movies/orderStates`
+    const url = `/group42/api/movies/orderStates`
 
     const response = await fetch(url);
     const orders = await response.json();

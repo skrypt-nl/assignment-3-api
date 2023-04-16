@@ -30,18 +30,18 @@ class Menu {
 
 async function checkUserStatus() {
     try {
-        const response = await fetch('/user');
+        const response = await fetch('/group42/user');
         const loggedIn = response.status === 200;
 
         const menuItems = [
-            { text: 'Movies', href: '/' },
+            { text: 'Movies', href: '/group42/' },
             ...(loggedIn
                 ? [
-                    { text: 'My Account', href: '/account' },
-                    { text: 'Logout', href: '/logout' },
+                    { text: 'My Account', href: '/group42/account' },
+                    { text: 'Logout', href: '/group42/logout' },
                 ] : [
-                    { text: 'Login', href: '/login' },
-                    { text: 'Sign Up', href: '/signup' },
+                    { text: 'Login', href: '/group42/login' },
+                    { text: 'Sign Up', href: '/group42/signup' },
                 ]),
         ];
 

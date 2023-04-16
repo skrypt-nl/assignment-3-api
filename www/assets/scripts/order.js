@@ -4,7 +4,7 @@ const movieId = window.location.pathname.split('order/')[1];
 
 // Factory function to get all moviePlays or the moviePlays on a specific date
 async function getPlays(date = null) {
-    let url = `/api/movies/${movieId}/plays/`;
+    let url = `/group42/api/movies/${movieId}/plays/`;
     if (date) url += `?date=${date}`;
 
     const response = await fetch(url);
@@ -36,7 +36,7 @@ async function getTimes(date) {
 
 // Get all movie details
 async function getMovieDetails() {
-    const response = await fetch(`/api/movies/${movieId}`);
+    const response = await fetch(`/group42/api/movies/${movieId}`);
     const movie = await response.json();
 
     const addOrderElements = (movie) => {
@@ -123,7 +123,7 @@ async function loadTimes(date = null, selectedTime = null) {
 
 // Retrieve the orderState for the current movie
 async function retrieveState() {
-    let url = `/api/movies/${movieId}/orderState`;
+    let url = `/group42/api/movies/${movieId}/orderState`;
 
     const response = await fetch(url);
 
@@ -148,7 +148,7 @@ async function updateState() {
         movieTime: time.value
     };
 
-    const url = `/api/movies/${movieId}/orderState`;
+    const url = `/group42/api/movies/${movieId}/orderState`;
 
     try {
         const response = await fetch(url, {

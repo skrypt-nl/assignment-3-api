@@ -25,7 +25,7 @@ routes.get('/signup', isGuest, (req, res) => {
 
 routes.get('/logout', (req, res) => {
     req.session.destroy((err) => {
-        res.redirect('/login')
+        res.redirect('/group42/login')
     })
 });
 
@@ -50,11 +50,11 @@ routes.post('/order/:id', loggedIn, async (req, res) => {
     if (stateIndex > -1) {
         req.session.orderStates[stateIndex].confirmed = true;
     } else {
-        res.redirect(`/order/${req.params.id}`);
+        res.redirect(`/group42/order/${req.params.id}`);
         return;
     }
 
-    res.redirect('/cart');
+    res.redirect('/group42/cart');
 });
 
 module.exports = routes;

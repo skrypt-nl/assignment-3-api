@@ -3,7 +3,7 @@
 async function getMovies() {
     const movieId = window.location.pathname.split('movie/')[1]; // Split path to get id
     
-    const response = await fetch(`/api/movies/${movieId}`); // Fetch selected movie
+    const response = await fetch(`/group42/api/movies/${movieId}`); // Fetch selected movie
     const movie = await response.json();
 
     const addMoviesToElement = (movie) => {
@@ -48,21 +48,21 @@ async function getMovies() {
             linkElement.textContent = text;
 
             const arrowNode = document.createElement('img');
-            arrowNode.src = '../../assets/icons/arrow-right.svg';
+            arrowNode.src = '/group42/assets/icons/arrow-right.svg';
             arrowNode.classList.add('movie__trailer-arrow');
             arrowNode.alt = text;
 
             linkElement.appendChild(arrowNode);
         }
+        
         // Create button that lets a user proceed to the order page for the selected movie
         const buttonPlace = document.querySelector('a.nav-button');
         const button = document.createElement("button");
         const link = document.createElement("a");
-        buttonPlace.href = "/order/"+movie.id+"";
+        buttonPlace.href = "/group42/order/"+movie.id+"";
         button.textContent = "Buy Tickets";
         buttonPlace.appendChild(link);
         link.appendChild(button);
-
     }
 
     addMoviesToElement(movie);

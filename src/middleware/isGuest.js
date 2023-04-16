@@ -4,7 +4,7 @@ const isGuest = (req, res, next) => {
     if (!req.session.userid) {
         next();
     } else {
-        res.redirect(`/account`);
+        res.redirect(`/group42/account`);
     }
 };
 

@@ -33,12 +33,12 @@ ticketRoutes.post('/', loggedIn, async (req, res) => {
     let orderStates = req.session.orderStates;
 
     if (!orderStates) {
-        res.redirect('/cart');
+        res.redirect('/group42/cart');
         return;
     }
 
     if (orderStates.length === 0) {
-        res.redirect('/cart');
+        res.redirect('/group42/cart');
         return;
     }
 
@@ -53,7 +53,7 @@ ticketRoutes.post('/', loggedIn, async (req, res) => {
     });
 
     if (!user) {
-        res.redirect('/login');
+        res.redirect('/group42/login');
         return;
     }
 
@@ -70,7 +70,7 @@ ticketRoutes.post('/', loggedIn, async (req, res) => {
     await Promise.all(ticketPromises);
     req.session.orderStates = await req.session.orderStates.filter((orderState) => !orderState.confirmed);
 
-    res.redirect('/thank-you');
+    res.redirect('/group42/thank-you');
 });
 
 module.exports = ticketRoutes;

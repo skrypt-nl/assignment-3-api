@@ -2,7 +2,7 @@
 
 const getUser = async () => {
   try {
-      const response = await fetch('/user');
+      const response = await fetch('/group42/user');
       return response.json();
   } catch (error) {
       console.error("Cannot retrieve user data");
@@ -11,7 +11,7 @@ const getUser = async () => {
 
 const getHistory = async () => {
   try {
-      const response = await fetch('/tickets');
+      const response = await fetch('/group42/tickets');
       return response.json();
   } catch (error) {
       console.error("Cannot retrieve user order history");
@@ -72,8 +72,6 @@ const displayUser = async () => {
       purchaseHeading.textContent = 'Order date: ' + hist.purchased_on;
       metaDiv.appendChild(purchaseHeading);
 
-
-       
       parentElement.appendChild(metaDiv);
   }
 
@@ -90,7 +88,7 @@ function logOutButton() {
   const buttonPlace = document.querySelector('.account-buttons');
   const continueButton = document.createElement("button");
   const continueLink = document.createElement("a");
-  continueLink.href = "./logout";
+  continueLink.href = "/group42/logout";
   continueButton.textContent = "Log out";
   buttonPlace.appendChild(continueLink);
   continueLink.appendChild(continueButton);
@@ -102,7 +100,7 @@ function cartButton() {
   const cartButtonPlace = document.querySelector('.account-buttons');
   const cartButton = document.createElement("button");
   const cartLink = document.createElement("a");
-  cartLink.href = "./cart";
+  cartLink.href = "/group42/cart";
   cartButton.textContent = "Go to cart";
   cartButtonPlace.appendChild(cartLink);
   cartLink.appendChild(cartButton);

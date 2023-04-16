@@ -10,7 +10,7 @@ const SQLiteStore = require('connect-sqlite3')(session);
 
 const startServer = () => {
     const app = express();
-    const port = 8042 //init session cookie;
+    const port = 8042
 
     app.use(session({
         store: new SQLiteStore({
@@ -22,7 +22,7 @@ const startServer = () => {
         saveUninitialized: false,
         cookie: { 
           secure: false,
-          maxAge: 60 * 60 * 24 * 365 // 1 min
+          maxAge: 60 * 60 * 24 * 365
         },
         genid: (req) => {
             return uuidv4();

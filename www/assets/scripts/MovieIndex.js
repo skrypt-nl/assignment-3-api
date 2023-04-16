@@ -5,7 +5,7 @@ const p = urlParams.get('p');
 const currentPage = (p && !isNaN(p)) ? parseInt(p) : 1;
 
 async function getMovies() {
-    const url = `http://localhost:8042/api/movies?p=${currentPage}`
+    const url = `/group42/api/movies?p=${currentPage}`
 
     const response = await fetch(url);
     const movies = await response.json();
@@ -40,7 +40,7 @@ async function getMovies() {
             const titleHeading = document.createElement('a');
             titleHeading.classList.add('mov-meta__title');
             titleHeading.textContent = movie.title;
-            titleHeading.href = "/movie/" + movie.id + "";
+            titleHeading.href = "/group42/movie/" + movie.id + "";
             metaDiv.appendChild(titleHeading);
 
             const yearHeading = document.createElement('h5');
@@ -70,7 +70,7 @@ function createButtons() {
     if (currentPage === 2) {
         const prevLink = document.createElement("a");
         prevLink.textContent = "< Previous page";
-        prevLink.href = `/?p=${currentPage - 1}`;
+        prevLink.href = `/group42/?p=${currentPage - 1}`;
 
         paginationWrapper.appendChild(prevLink);
     }
@@ -79,7 +79,7 @@ function createButtons() {
     if (currentPage === 1) {
         const nextLink = document.createElement("a");
         nextLink.textContent = "Next page >";
-        nextLink.href = `/?p=${currentPage + 1}`
+        nextLink.href = `/group42/?p=${currentPage + 1}`
 
         paginationWrapper.appendChild(nextLink);
     }
