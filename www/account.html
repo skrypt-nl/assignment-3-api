@@ -31,32 +31,38 @@
     <main class="fill-body">
         <section class="acc">
             <div class="acc-card">
-                <div class="acc-card__titles">
+                <div class="acc-card__header">
                     <h1 class="acc-card__title">Welcome back, <span id="userNameHeader" class="acc-card_username-title"></span>!</h1>
-                    <hr>
-                    <h2 class="acc-card__sub-title">My account details</h2>
-                    <div class="acc-card_details">
-                        <div class="acc-card__static">
-                            <h3 class="acc-card__sub-title">Name</h3>
-                            <h3 class="acc-card__sub-title">Login</h3>
-                            <h3 class="acc-card__sub-title">Email</h3>
-                            <h3 class="acc-card__sub-title">Password</h3>
-                            <h3 class="acc-card__sub-title">Address</h3>
-                            <h3 class="acc-card__sub-title">Creditcard</h3>
-                            <h3 class="acc-card__sub-title">Order history</h3>
-                        </div>
-                        <div class="acc-card__dynamic">
-                            <span id="userName"></span>
-                            <span id="login"></span>
-                            <span id="email"></span>
-                            <span id="password"></span>
-                            <span id="address"></span>
-                            <span id="creditcard"></span>
-                            <div class="history-group__list"></div>
-                        </div>
+                    <div class="account-buttons"></div>
+                </div>
+                <hr>
+                <div class="acc-card__details">
+                    <h2 class="acc-card__subtitle">Account details</h2>
+                    <div class="acc-card__details-grid">
+                        <h3 class="acc-card__grid-label">Name</h3>
+                        <span id="userName"></span>
+
+                        <h3 class="acc-card__grid-label">Login</h3>
+                        <span id="login"></span>
+
+                        <h3 class="acc-card__grid-label">Email</h3>
+                        <span id="email"></span>
+
+                        <h3 class="acc-card__grid-label">Password</h3>
+                        <span id="password"></span>
+
+                        <h3 class="acc-card__grid-label">Address</h3>
+                        <span id="address"></span>
+
+                        <h3 class="acc-card__grid-label">Creditcard</h3>
+                        <span id="creditcard"></span>
                     </div>
                 </div>
-                <div class="account-buttons"></div>
+                <hr>
+                <div class="acc-card__orders">
+                    <h3 class="acc-card__subtitle">Order history</h3>
+                    <div class="history-group__list"></div>
+                </div>
             </div>
         </section>
     </main>
