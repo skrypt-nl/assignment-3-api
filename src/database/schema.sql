@@ -26,15 +26,12 @@ CREATE TABLE tickets (
     movie_play_id INTEGER,
     amount INTEGER,
     purchased_on TEXT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (movie_play_id) REFERENCES movie_plays(id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE movie_plays (
     id INTEGER,
     movie_id TEXT,
     movie_date TEXT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (movie_id) REFERENCES movies(id)
+    PRIMARY KEY (id)
 );

@@ -46,7 +46,6 @@ const createUsers = async () => { //create 5 users
       address: 'Bolognalaan 123',
       credit_card: '1234123412341234'
     }
-    
   ];
 
   users.forEach((user) => {
@@ -57,8 +56,71 @@ const createUsers = async () => { //create 5 users
   });
 }
 
+const createTickets = async () => {
+  const tickets = [
+    {
+      userId: 1,
+      moviePlayId: 2,
+      amount: 4
+    },
+    {
+      userId: 2,
+      moviePlayId: 44,
+      amount: 2
+    },
+    {
+      userId: 3,
+      moviePlayId: 63,
+      amount: 2
+    },
+    {
+      userId: 4,
+      moviePlayId: 111,
+      amount: 6
+    },
+    {
+      userId: 5,
+      moviePlayId: 86,
+      amount: 3
+    },
+    {
+      userId: 1, 
+      moviePlayId: 97,
+      amount: 8
+    },
+    {
+      userId: 2, 
+      moviePlayId: 133, 
+      amount: 1
+    },
+    {
+      userId: 3,
+      moviePlayId: 56, 
+      amount: 7
+    },
+    {
+      userId: 4, 
+      moviePlayId: 78,
+      amount: 3
+    },
+    {
+      userId: 5, 
+      moviePlayId: 6,
+      amount: 5
+    },
+  ];
+
+  const purchaseDate = new Date().toISOString().slice(0, 19).replace('T', ' ').toString();
+
+  tickets.forEach((ticket) => {
+    db.run(
+        'INSERT INTO tickets (user_id, movie_play_id, amount, purchased_on) VALUES (?, ?, ?, ?)',
+        [ticket.userId, ticket.moviePlayId, ticket.amount, purchaseDate]
+    );
+  });
+}
+
 const seedDatabase = async () => {
-    // Seed tables
     const seedSql = fs.readFileSync('./src/database/seeder.sql', 'utf-8');
 
     await db.exec(seedSql, (err) => {
@@ -70,6 +132,7 @@ const seedDatabase = async () => {
     });
 
     await createUsers();
+    await createTickets();
 };
 
 module.exports = {
