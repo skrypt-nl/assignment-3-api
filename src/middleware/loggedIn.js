@@ -5,7 +5,7 @@ const loggedIn = (req, res, next) => {
         next();
     } else {
         const errorMessage = encodeURIComponent('You need to be logged in to access this page.');
-        const nextUrl = encodeURIComponent(req.originalUrl);
+        const nextUrl = encodeURIComponent(!req.originalUrl.startsWith('/group42/') ? `/group42/${req.originalUrl}` : req.originalUrl);
         res.redirect(`/group42/login?status=ERROR&message=${errorMessage}&from=${nextUrl}`);
     }
 };
