@@ -1,3 +1,13 @@
+# Assignment 3
+Group 42 - http://webtech.science.uu.nl/group42/
+
+Luke Koning (7073046)
+
+Rick Tibbe (0794732)
+
+Tomas van Groningen (2435268)
+
+
 # How to use
 1) Clone the repo
 2) Run `npm install`
@@ -5,29 +15,39 @@
 4) Run `npm run dev` to start the server
 5) Access the server at localhost:8042
 
-# Routes
 
-GET /movies                     -> Alle movies ophalen, met paginations
-                                    Query param -> ?p=1 of ?p=2, etc
+# Database tables
+`movie_plays` - Contains all different dates & times when a movie plays
 
-GET /movies/:id                 -> Movie ophalen met ID
-GET /movies/:id/plays           -> Data wanneer de film speelt
-GET /movies/:id/plays/:date     -> Timeslots voor de datum wanneer de film speelt
+`movies` - Contains all movies
 
-POST /tickets/:moviePlayId      -> Tickets bestellen
-                                    BODY: aantal tickets, cc nummer
+`tickets` - Contains all purchased tickets, a.k.a. orders
 
-GET /user                       -> Haal de user op, wanneer deze ingelogd is
-GET /tickets                    -> Haal de tickets van de ingelogde user op
+`users` - Contains all registered users
+
+`db.sqlite3` contains the regular database
+
+`sessions.sqlite3` contains all persisted express-sessions
+
+For the seeding and creation of the database, run `npm run db`. The SQL definitions for both creating the database and seeding it, can be found inside `/src/database`.
+
+
+# Users
+Password for all users is `secret`, although every user can use a unique password.
+
+Usernames:
+- superman
+- karen
+- tomas
+- rick
+- luke
+
+Passwords are also hasehd with bcrypt for extra security.
+
 
 # Webtechnology
 Interactive Web Application for Utrecht University's Webtechnology course.</br>
 Assignment 3 - JavaScript & DOM manipulation
-
-The amazing developers of this website: </br>
-Luke Koning (7073046) </br>
-Rick Tibbe (0794732) </br>
-Tomas van Groningen (2435268)
 
 Sources we used: </br>
 https://interstellarfilm.fandom.com/wiki/Interstellar_Wiki </br>
