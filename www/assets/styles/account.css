@@ -20,8 +20,11 @@
 
 .acc-card {
     display: flex;
-    flex-direction: row;
-    gap: 3rem;
+    flex-direction: column;
+
+    justify-content: stretch;
+
+    gap: 1rem;
     margin-left: auto;
     margin-right: auto;
     background: rgba(255,255,255, 0.1);
@@ -30,8 +33,31 @@
     border-radius: 16px;
     padding: 3rem 4rem;
 
-    width: auto;
-    max-width: 900px;
+    width: 100%;
+    max-width: 720px;
+}
+
+.acc-card__header {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+}
+
+.acc-card__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.acc-card__details-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+}
+
+.acc-card__details-grid > * {
+    padding: 0.25rem 0;
+    align-self: center;
 }
 
 .acc-card__title {
@@ -43,26 +69,41 @@
     color: #eab308;
 }
 
-.acc-card__sub-title {
-    font-size: 1rem;
-    font-weight: 300;
+.acc-card__subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
     color: #dfdfdf;
+
+    text-transform: uppercase;
+}
+
+.acc-card__grid-label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #dfdfdf;
+
+    text-transform: uppercase;
 }
 
 .acc-card hr {
-    margin-left: 0%;
-    max-width: 100%;
+    width: 100%;
 }
 
-.account-buttons {
+.acc-card__orders {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
+.account-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
 
 .history-group__list {
-    display: flex;;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
 }
 

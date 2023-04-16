@@ -52,25 +52,27 @@ const displayUser = async () => {
       idHeading.textContent = 'Order #' + hist.ticketId;
       metaDiv.appendChild(idHeading);
 
-      const amountHeading = document.createElement('h5');
-      amountHeading.classList.add('hs-meta__data');
-      amountHeading.textContent = 'Amount: ' + hist.amount;
-      metaDiv.appendChild(amountHeading);
-
-      const purchaseHeading = document.createElement('h5');
-      purchaseHeading.classList.add('hs-meta__data');
-      purchaseHeading.textContent = 'Purchase Date: ' + hist.purchased_on;
-      metaDiv.appendChild(purchaseHeading);
-
-      const dateHeading = document.createElement('h5');
-      dateHeading.classList.add('hs-meta__data');
-      dateHeading.textContent = 'Movie Date: ' + hist.movie_date;
-      metaDiv.appendChild(dateHeading);
-
       const titleHeading = document.createElement('h5');
       titleHeading.classList.add('hs-meta__data');
       titleHeading.textContent = 'Movie: ' + hist.title;
       metaDiv.appendChild(titleHeading);
+
+      const dateHeading = document.createElement('h5');
+      dateHeading.classList.add('hs-meta__data');
+      dateHeading.textContent = 'Movie date: ' + hist.movie_date;
+      metaDiv.appendChild(dateHeading);
+
+      const amountHeading = document.createElement('h5');
+      amountHeading.classList.add('hs-meta__data');
+      amountHeading.textContent = `Tickets: ${hist.amount}x`;
+      metaDiv.appendChild(amountHeading);
+
+      const purchaseHeading = document.createElement('h5');
+      purchaseHeading.classList.add('hs-meta__data');
+      purchaseHeading.textContent = 'Order date: ' + hist.purchased_on;
+      metaDiv.appendChild(purchaseHeading);
+
+
        
       parentElement.appendChild(metaDiv);
   }
