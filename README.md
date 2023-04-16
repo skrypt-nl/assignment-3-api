@@ -16,7 +16,10 @@ Tomas van Groningen (2435268)
 5) Access the server at localhost:8042
 
 
-# Database tables
+# Database 
+
+## Structure
+
 `movie_plays` - Contains all different dates & times when a movie plays
 
 `movies` - Contains all movies
@@ -24,6 +27,8 @@ Tomas van Groningen (2435268)
 `tickets` - Contains all purchased tickets, a.k.a. orders
 
 `users` - Contains all registered users
+
+## Files
 
 `db.sqlite3` contains the regular database
 
@@ -42,7 +47,7 @@ Usernames:
 - rick
 - luke
 
-Passwords are also hasehd with bcrypt for extra security.
+Passwords are also hashed with bcrypt for extra security.
 
 
 # Webtechnology
